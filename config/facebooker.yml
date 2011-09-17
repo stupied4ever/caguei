@@ -2,3 +2,8 @@ development:
   app_id: 139814176115603
   secret: edc8cf573f5dfef57defc04471d440e0
   api_key: 139814176115603
+
+production:
+    app_id: 139814176115603
+    secret: edc8cf573f5dfef57defc04471d440e0
+    api_key: 139814176115603
