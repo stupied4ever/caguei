@@ -1,6 +1,6 @@
 <%= fb_connect_async_js %>
 <% if current_facebook_user %>
-   <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
+   <%= "Welcome #{current_facebook_user.email} #{current_facebook_user.last_name}!" %>
    or 
    <%= "Hello #{fb_name(current_facebook_user, :useyou => false)}!" # link to facebook profile
     %>
@@ -10,5 +10,5 @@
    # here we instruct facebook to ask the user for permission for our website
    # to access the user's facebook email and birthday
    %>
-  <%= fb_login_and_redirect('http://caguei.heroku.com', :perms => 'first_name,last_name,email,user_birthday') %>
+  <%= fb_login_and_redirect('http://caguei.heroku.com', :perms => 'email,user_birthday') %>
 <% end %>
