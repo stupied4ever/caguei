@@ -3,7 +3,7 @@
    <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
 		<%= current_facebook_user.first_name %>
    or 
-   <%= "Hello #{fb_name(current_facebook_user, :useyou => false)}!".html_safe # link to facebook profile %>
+   <%= "Hello #{fb_name(current_facebook_user, :useyou => false).html_safe}!" # link to facebook profile %>
   <%= fb_logout_link("Logout of fb", request.url) %><br />
 <% else
    # you must explicitly request permissions for facebook user fields.
