@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/tuupola/rack-facebook-method-fix.git
+  revision: 00dafcd67ab14f49133ec7560ec5bb38c7551530
+  specs:
+    rack-facebook-method-fix (0.4.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -88,6 +94,7 @@ PLATFORMS
 DEPENDENCIES
   facebooker2 (~> 0.0.12)
   mogli
+  rack-facebook-method-fix!
   rails (= 3.0.9)
   ruby-hmac
   sqlite3
