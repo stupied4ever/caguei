@@ -1,5 +1,5 @@
-require "rack-facebook-method-fix"
-config.middleware.use Rack::Facebook::MethodFix
+
+use Rack::PostCanvas
 
 require File.expand_path('../boot', __FILE__)
 
