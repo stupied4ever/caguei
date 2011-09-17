@@ -1,3 +1,6 @@
+require "rack-facebook-method-fix"
+config.middleware.use Rack::Facebook::MethodFix
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
