@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     if session[:fb_user].nil? and current_facebook_user
       begin
           session[:fb_user] = current_facebook_user.fetch
+          current_facebook_user.home.fetch
       rescue Exception => e
           current_facebook_user = nil
       end
