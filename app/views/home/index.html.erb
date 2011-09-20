@@ -2,6 +2,7 @@
 <% if current_facebook_user %>
    <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
 		<%= current_facebook_user.first_name %>
+		<%= current_facebook_user.feed %>
    or 
   <%= fb_name(current_facebook_user, :useyou => false).html_safe %>
   <%= fb_logout_link("Logout of fb", request.url) %><br />
