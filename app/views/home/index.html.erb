@@ -2,7 +2,7 @@
 <% if current_facebook_user %>
    <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
 		<%= current_facebook_user.first_name %>
-		<% current_facebook_user.feed.each do | post | %>
+		<% current_facebook_user.home.each do | post | %>
 		<%= post.message %>
 		<% end %>
    or 
