@@ -39,8 +39,8 @@ module Caguei
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
     
-    ENV["FACEBOOK_APP_ID"] = "287560107938359"
+    ENV["FACEBOOK_APP_ID"] = "139814176115603"
     
-    ENV["FACEBOOK_SECRET"] = "3d904494c62d023e7cf4b82785e43c47"
+    ENV["FACEBOOK_SECRET"] = "edc8cf573f5dfef57defc04471d440e0"
   end
 end
