@@ -23,7 +23,7 @@ gem 'sqlite3'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-gem 'mogli', :require => 'mogli', :git => 'git@github.com:stupied4ever/mogli.git', :branch => "patch-1"
+gem 'mogli'# , :require => 'mogli', :git => 'git@github.com:stupied4ever/mogli.git', :branch => "patch-1"
 gem "jquery-rails"
 
 # Bundle gems for the local environment. Make sure to
