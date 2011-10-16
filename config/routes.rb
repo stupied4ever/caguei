@@ -7,9 +7,11 @@ Caguei::Application.routes.draw do
 
   get "home/index"
   
-  get 'cagar/caguei', :as => :cagar
+  get 'cagar/caguei/', :as => :cagar
   
   root :to => "home#index"
+  
+  resources :entries
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

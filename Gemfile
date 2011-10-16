@@ -24,6 +24,7 @@ gem 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem 'mogli', :require => 'mogli', :git => 'git@github.com:stupied4ever/mogli.git', :branch => "patch-1"
+gem "jquery-rails"
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

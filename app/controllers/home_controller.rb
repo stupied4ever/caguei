@@ -3,5 +3,4 @@ class HomeController < ApplicationController
   def index
     @home_posts = @current_user.home.select{ |p| p.message.blank? == false }
   end
-
 end

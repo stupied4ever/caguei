@@ -1,16 +1,16 @@
-<%= @client.access_token %>
+<div>
+	<%= flash[:notice] %>
+</div>
 <ul>
 	<% @home_posts.each do |post| %>
 	<li class="post">
-		<%= render :partial => "bar/caguei" %>
+		<%= render :partial => "entries/form", :locals => {:entry => Entry.new(:to_id => post.id, :user_to_id => post.from.id, :user_name => post.from )} %>
 		<%= link_to(image_tag(post.from.small_image_url), "http://facebook.com/#{post.from.id}", :class=> "avatar") if post.from.small_image_url %>
 		<p><span><%= link_to(post.from, "http://facebook.com/#{post.from.id}") %></span><br />
 			
 			<!-- <%= post.type %> [ta aki para debug] -->
 			<%= post.message %><br />
 			<%= image_tag post.picture if post.picture %>
-			<%= post.id %>
-		
 		</P>
 		<!-- <%= post.inspect %> -->
 	</li>

@@ -8,28 +8,4 @@ class CagarController < ApplicationController
   end
   
   
-  private
-  def send_caguei_comment(message)
-    data = { :access_token => @client.access_token, :message => message }
-  
-    url = URI.parse("https://graph.facebook.com/1560140991_272127756151837/comments"  )
-    req = Net::HTTP::Post.new(url.path)
-    req.form_data = data
-
-    con = Net::HTTP.new(url.host, url.port)
-    con.use_ssl = true
-    con.start {|http| http.request(req)}    
-  end
-  
-  def creat_a_new_post_to_my_feed(message, name, link, description, picture)
-    data = { :access_token => @client.access_token, :message => message, :name => name, :link => link, :description => description, :picture => picture, :to => [{:name => "Vitor Navarro", :id => "1560140991"}] }
-  
-    url = URI.parse("https://graph.facebook.com/#{@current_user.id}/feed"  )
-    req = Net::HTTP::Post.new(url.path)
-    req.form_data = data
-
-    con = Net::HTTP.new(url.host, url.port)
-    con.use_ssl = true
-    con.start {|http| http.request(req)}
-  end
 end

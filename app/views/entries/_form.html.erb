@@ -1,0 +1,11 @@
+<div id="caguei_bar">
+	<%= form_for(entry) do |f| %>
+	    <%= f.hidden_field :user_from_id, :value => @current_user.id %>
+	    <%= f.hidden_field :user_to_id, :value => entry.user_to_id %>
+	    <%= f.hidden_field :user_name, :value => entry.user_name %>
+	    <%= f.hidden_field :to_id, :value => entry.to_id %>
+			<%= link_to image_tag("caguei.jpg", :height => "30"), "#", :onclick=>"$('.search_form').submit()", :class => "submit_button" %>
+			
+	<% end %>
+
+</div>
