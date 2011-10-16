@@ -1,17 +1,18 @@
-<%= fb_connect_async_js %>
-<% if current_facebook_user %>
-   <%= "Welcome #{current_facebook_user.first_name} #{current_facebook_user.last_name}!" %>
-		<%= current_facebook_user.first_name %>
-		<% current_facebook_user.home.each do | post | %>
-		<%= post.message %>
-		<% end %>
-   or 
-  <%= fb_name(current_facebook_user, :useyou => false).html_safe %>
-  <%= fb_logout_link("Logout of fb", request.url) %><br />
-<% else
-   # you must explicitly request permissions for facebook user fields.
-   # here we instruct facebook to ask the user for permission for our website
-   # to access the user's facebook email and birthday
-   %>
-  <%= fb_login_and_redirect('http://caguei.heroku.com', :perms => 'email,user_birthday,read_stream') %>
-<% end %>
+<%= @client.access_token %>
+<ul>
+	<% @home_posts.each do |post| %>
+	<li class="post">
+		<%= render :partial => "bar/caguei" %>
+		<%= link_to(image_tag(post.from.small_image_url), "http://facebook.com/#{post.from.id}", :class=> "avatar") if post.from.small_image_url %>
+		<p><span><%= link_to(post.from, "http://facebook.com/#{post.from.id}") %></span><br />
+			
+			<!-- <%= post.type %> [ta aki para debug] -->
+			<%= post.message %><br />
+			<%= image_tag post.picture if post.picture %>
+			<%= post.id %>
+		
+		</P>
+		<!-- <%= post.inspect %> -->
+	</li>
+	<% end %>
+</ul>

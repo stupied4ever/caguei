@@ -1,18 +1,33 @@
-class ApplicationController < ActionController::Base
-  include Facebooker2::Rails::Controller
-  protect_from_forgery
-  before_filter :set_fb_session
+FACEBOOK_SCOPE = 'publish_stream,read_stream,user_likes,user_photos,user_photo_video_tags'
 
-  def set_fb_session
-    if session[:fb_user].nil? and current_facebook_user
-      begin
-          session[:fb_user] = current_facebook_user.fetch
-          current_facebook_user.home.fetch
-      rescue Exception => e
-          current_facebook_user = nil
-      end
-    elsif not current_facebook_user.inspect
-        session[:fb_user] = nil
+class ApplicationController < ActionController::Base
+  protect_from_forgery
+  before_filter :check_env_keys, :set_current_user
+
+
+
+  private
+  def set_current_user
+    @client = Mogli::Client.new(session[:at]) if session[:at]
+    @current_user = Mogli::User.find("me", @client) if @client
+  end
+  
+  def check_env_keys
+    unless ENV["FACEBOOK_APP_ID"] && ENV["FACEBOOK_SECRET"]
+      abort("missing env vars: please set FACEBOOK_APP_ID and FACEBOOK_SECRET with your app credentials")
     end
+  end
+  
+  def require_fb_auth
+    redirect_to "/auth/index" unless session[:at]
+  end
+  
+  def authenticator
+    @authenticator ||= Mogli::Authenticator.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/callback"))
+  end
+  
+  def url(path)
+    base = "#{request.scheme}://#{request.env['HTTP_HOST']}"
+    base + path
   end
 end

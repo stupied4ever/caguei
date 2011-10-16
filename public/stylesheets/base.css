@@ -1,0 +1,23 @@
+ul.dashboard{
+	
+}
+li.post{
+	position: relative;
+	display: inline-block;
+	padding: 20px 0 0 0;
+	width: 100%;
+	border-bottom: 1px solid #666;
+}
+li.post a.avatar{
+	float: left;
+}
+li.post p{
+	float: left;
+	margin: 0 10px 0;
+}
+
+#caguei_bar{
+	position: absolute;
+	right: 0;
+	top: 0;
+}
