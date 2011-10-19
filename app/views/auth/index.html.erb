@@ -2,7 +2,7 @@
 <script> 
 	$(document).ready(function() {
 
-		 top.location.href="https://graph.facebook.com/oauth/authorize?client_id=287560107938359&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fcallback&scope=publish_stream,read_stream,user_likes,user_photos,user_photo_video_tags&display=page"
+		 top.location.href="<%= @authentication_url %>"
 
 	});
 </script>
