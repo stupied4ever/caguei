@@ -1,7 +1,7 @@
 class AuthController < ApplicationController
   def index
     session[:at]=nil
-    redirect_to authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
+    redirect_to  authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'popup')
   end
 
   def callback

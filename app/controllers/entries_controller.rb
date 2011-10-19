@@ -44,6 +44,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(params[:entry])
     @entry.access_token = @client.access_token
     @entry.user_from_id = @current_user.id
+    @entry.link = @app.link
     
     respond_to do |format|
       if @entry.save

@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
       @client = Mogli::Client.new(session[:at])
       puts "__-_-_---__----#{@client.inspect}"
       @current_user = Mogli::User.find("me", @client)
+      @app = Mogli::Application.find(ENV["FACEBOOK_APP_ID"], @client)
     end
   end
   
