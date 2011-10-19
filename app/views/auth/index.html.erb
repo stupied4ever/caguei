@@ -2,7 +2,7 @@
 <script> 
 	$(document).ready(function() {
 
-		 top.location.href="<%= 'https://graph.facebook.com/oauth/authorize?client_id=139814176115603&redirect_uri=http%3A%2F%2Fcaguei.heroku.com%2Fauth%2Fcallback&scope=publish_stream,read_stream,user_likes,user_photos,user_photo_video_tags&display=page' %>"
+		 top.location.href="https://graph.facebook.com/oauth/authorize?client_id=<%= ENV["FACEBOOK_APP_ID"] %>&redirect_uri=http://caguei.heroku.com/auth/callback&scope=publish_stream,read_stream,user_likes,user_photos,user_photo_video_tags&display=page'"
 
 	});
 </script>
