@@ -5,7 +5,7 @@ Caguei::Application.routes.draw do
 
   get "auth/close"
 
-  get "home/index"
+  match 'home/index' => 'home#index'
   
   get 'cagar/caguei/', :as => :cagar
   
