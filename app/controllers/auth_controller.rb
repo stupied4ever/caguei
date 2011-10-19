@@ -13,7 +13,7 @@ class AuthController < ApplicationController
     @app = Mogli::Application.find(ENV["FACEBOOK_APP_ID"], @client)
     
     session[:at] = @client.access_token
-    redirect_to @app.link
+    redirect_to "https://apps.facebook.com/#{ENV["FACEBOOK_APP_ID"]}/"
   end
 
   def close
