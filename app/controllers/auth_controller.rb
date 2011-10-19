@@ -1,7 +1,7 @@
 class AuthController < ApplicationController
   def index
     @authentication_url = authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
-    puts "URL => #{ authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')}"
+    puts "URL => #{ authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page', :return_sesion => 1, :canvas=> 1)}"
     # redirect_to authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
   end
 
@@ -12,7 +12,7 @@ class AuthController < ApplicationController
     @app = Mogli::Application.find(ENV["FACEBOOK_APP_ID"], @client)
     
     session[:at] = @client.access_token
-    redirect_to "https://apps.facebook.com/#{ENV["FACEBOOK_APP_ID"]}/"
+    redirect_to root_path
   end
 
   def close
