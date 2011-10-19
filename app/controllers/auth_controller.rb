@@ -1,7 +1,7 @@
 class AuthController < ApplicationController
   def index
     @authentication_url = authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
-    puts "URL => #{ authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page', :return_sesion => 1, :canvas=> 1)}"
+    puts "URL => #{ authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page', :return_sesion => 1, :canvas=> 1, :method=> "permissions.request")}"
     # redirect_to authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
   end
 
