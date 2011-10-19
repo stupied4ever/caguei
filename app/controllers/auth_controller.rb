@@ -1,12 +1,14 @@
 class AuthController < ApplicationController
   def index
+    @url_call_back = url('/auth/callback')
+    puts "URL => #{ authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')}"
     session[:at]=nil
-    redirect_to  "https://www.facebook.com/dialog/oauth?client_id=#{ENV["FACEBOOK_APP_ID"]}&redirect_uri=#{url('/auth/callback')}&scope= #{FACEBOOK_SCOPE}"
-    # authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'popup')
+    redirect_to authenticator.authorize_url(:scope => FACEBOOK_SCOPE, :display => 'page')
   end
 
   def callback
-    # puts  "#{params.inspect} _---_-_----_-_-_-_-"
+    # puts  "#{params[:code]} _---_-_----_-_-_-_-"
+    # 
     @client = Mogli::Client.create_from_code_and_authenticator(params[:code], authenticator)
     session[:at] = @client.access_token
     redirect_to "/"
