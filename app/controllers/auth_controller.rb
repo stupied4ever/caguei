@@ -10,6 +10,8 @@ class AuthController < ApplicationController
     # puts  "#{params[:code]} _---_-_----_-_-_-_-"
     # 
     @client = Mogli::Client.create_from_code_and_authenticator(params[:code], authenticator)
+    @app = Mogli::Application.find(ENV["FACEBOOK_APP_ID"], @client)
+    
     session[:at] = @client.access_token
     redirect_to @app.link
   end
