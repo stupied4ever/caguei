@@ -11,7 +11,7 @@ class AuthController < ApplicationController
     # 
     @client = Mogli::Client.create_from_code_and_authenticator(params[:code], authenticator)
     session[:at] = @client.access_token
-    redirect_to "/"
+    redirect_to @app.link
   end
 
   def close
