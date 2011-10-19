@@ -3,13 +3,21 @@ FACEBOOK_SCOPE = 'publish_stream,read_stream,user_likes,user_photos,user_photo_v
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :check_env_keys, :set_current_user
-
-
+  
+  rescue_from Mogli::Client::HTTPException, :with => :reset_auth
 
   private
   def set_current_user
-    @client = Mogli::Client.new(session[:at]) if session[:at]
-    @current_user = Mogli::User.find("me", @client) if @client
+    if session[:at]
+      @client = Mogli::Client.new(session[:at])
+      puts "__-_-_---__----#{@client.inspect}"
+      @current_user = Mogli::User.find("me", @client)
+    end
+  end
+  
+  def reset_auth
+    session[:at] = nil
+    redirect_to root_path
   end
   
   def check_env_keys

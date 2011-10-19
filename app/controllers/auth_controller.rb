@@ -5,8 +5,9 @@ class AuthController < ApplicationController
   end
 
   def callback
-    client = Mogli::Client.create_from_code_and_authenticator(params[:code], authenticator)
-    session[:at] = client.access_token
+    # puts  "#{params.inspect} _---_-_----_-_-_-_-"
+    @client = Mogli::Client.create_from_code_and_authenticator(params[:code], authenticator)
+    session[:at] = @client.access_token
     redirect_to "/"
   end
 
